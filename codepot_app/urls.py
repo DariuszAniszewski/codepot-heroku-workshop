@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^memory/(?P<megs>[0-9]+)/$', 'codepot.views.memory', name='memory'),
     url(r'^wait-for/(?P<seconds>[0-9]+)/$', 'codepot.views.slow_response', name='slow_response'),
     url(r'^crash-me$', 'codepot.views.crash_me', name='crash_me'),
+    url(r'^is-redis-alive$', 'codepot.views.is_redis_alive', name='is_redis_alive'),
 ]

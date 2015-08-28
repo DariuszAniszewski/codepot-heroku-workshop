@@ -4,6 +4,8 @@ import sys
 
 from django.conf import settings
 from django.shortcuts import render
+import redis
+from redis.exceptions import ConnectionError
 
 
 def home(request):
@@ -118,3 +120,23 @@ def slow_response(request, seconds):
 
 def crash_me(request):
     error = 10 / 0
+
+
+def is_redis_alive(request):
+    config_var = False
+    redis_alive = False
+
+    if os.environ.get("REDIS_URL", None):
+        config_var = True
+        try:
+            r = redis.from_url(os.environ.get("REDIS_URL", None))
+            r.set("key", "value")
+            redis_alive = True
+        except ConnectionError:
+            pass
+
+    data = {
+        "config_var": config_var,
+        "redis_alive": redis_alive,
+    }
+    return render(request, "redis.html", data)
