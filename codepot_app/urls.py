@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^$', 'codepot.views.home', name='home'),
     url(r'^logs$', 'codepot.views.log', name='log'),
     url(r'^timeout$', 'codepot.views.timeout', name='timeout'),
+    url(r'^save-file$', 'codepot.views.save_file', name='save-file'),
+    url(r'^read-file$', 'codepot.views.read_file', name='read-file'),
 ]

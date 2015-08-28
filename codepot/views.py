@@ -1,4 +1,7 @@
+import os
 from time import sleep
+
+from django.conf import settings
 from django.shortcuts import render
 
 
@@ -44,3 +47,40 @@ def timeout(request):
         print("{}s...".format(i))
     print("WOW, Heroku returned H12 error like 30 seconds ago, but I'm still alive")
     return render(request, "timeout.html")
+
+
+def save_file(request):
+    file_name = "dummy-file.txt"
+    file_path = os.path.join(settings.BASE_DIR, file_name)
+    file_existed = os.path.exists(file_path)
+    file_content = "Lorem ipsum"
+    file = open(file_path, "w")
+    file.write(file_content)
+    file.close()
+    file_exists_after = os.path.exists(file_path)
+
+    data = {
+        "file_existed": file_existed,
+        "file_exists_after": file_exists_after,
+        "file_path": file_path,
+        "file_content": file_content,
+    }
+    return render(request, "save-file.html", data)
+
+
+def read_file(request):
+    file_name = "dummy-file.txt"
+    file_path = os.path.join(settings.BASE_DIR, file_name)
+    file_exists = os.path.exists(file_path)
+    file_content = None
+    if file_exists:
+        file = open(file_path, "r")
+        file_content = file.read()
+        file.close()
+
+    data = {
+        "file_exists": file_exists,
+        "file_path": file_path,
+        "file_content": file_content,
+    }
+    return render(request, "read-file.html", data)

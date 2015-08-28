@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>File path: {{ file_path }}</h1>
+    <h1>Did file existed: {{ file_existed }}</h1>
+    <h1>Is file existing now: {{ file_exists_after }}</h1>
+    <h1>Content:</h1>
+    <pre>{{ file_content }}</pre>
+{% endblock %}

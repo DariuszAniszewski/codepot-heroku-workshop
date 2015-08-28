@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>File path: {{ file_path }}</h1>
+    {% if file_exists %}
+        <h1>Content:</h1>
+        <pre>{{ file_content }}</pre>
+    {% else %}
+        <h1 class="text-danger">File doesn't exists :(</h1>
+    {% endif %}
+{% endblock %}
