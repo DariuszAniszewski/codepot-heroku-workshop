@@ -103,3 +103,18 @@ def memory(request, megs):
         "megs": megs,
     }
     return render(request, "memory.html", data)
+
+
+def slow_response(request, seconds):
+    for i in range(1, int(seconds) + 1):
+        sleep(1)
+        print("{}s...".format(i))
+    print("OK, enough")
+    data = {
+        "seconds": seconds,
+    }
+    return render(request, "slow-response.html", data)
+
+
+def crash_me(request):
+    error = 10 / 0

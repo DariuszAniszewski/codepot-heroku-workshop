@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^read-file$', 'codepot.views.read_file', name='read-file'),
     url(r'^python-version$', 'codepot.views.python_version', name='python-version'),
     url(r'^memory/(?P<megs>[0-9]+)/$', 'codepot.views.memory', name='memory'),
+    url(r'^wait-for/(?P<seconds>[0-9]+)/$', 'codepot.views.slow_response', name='slow_response'),
+    url(r'^crash-me$', 'codepot.views.crash_me', name='crash_me'),
 ]
