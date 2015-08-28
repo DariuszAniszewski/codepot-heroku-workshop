@@ -1,5 +1,6 @@
 import os
 from time import sleep
+import sys
 
 from django.conf import settings
 from django.shortcuts import render
@@ -84,3 +85,10 @@ def read_file(request):
         "file_content": file_content,
     }
     return render(request, "read-file.html", data)
+
+
+def python_version(request):
+    data = {
+        "version": sys.version.split(" ")[0]
+    }
+    return render(request, "version.html", data)

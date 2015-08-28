@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^timeout$', 'codepot.views.timeout', name='timeout'),
     url(r'^save-file$', 'codepot.views.save_file', name='save-file'),
     url(r'^read-file$', 'codepot.views.read_file', name='read-file'),
+    url(r'^python-version$', 'codepot.views.python_version', name='python-version'),
 ]
