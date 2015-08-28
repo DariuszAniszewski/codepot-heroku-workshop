@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'codepot',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,3 +104,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_HOST = os.environ.get("MAILGUN_SMTP_SERVER")
+EMAIL_HOST_USER = os.environ.get("MAILGUN_SMTP_LOGIN")
+EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_SMTP_PASSWORD")
+EMAIL_PORT = os.environ.get("MAILGUN_SMTP_PORT", 587)
+EMAIL_USE_TLS = True
+
+FROM_EMAIL = "no-reply@{}".format(os.environ.get("MAILGUN_DOMAIN"))
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_NAME = os.environ.get("MY_NAME")
+DARIUSZ_EMAIL = "codepot@aniszewski.eu"
