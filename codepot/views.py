@@ -92,3 +92,14 @@ def python_version(request):
         "version": sys.version.split(" ")[0]
     }
     return render(request, "version.html", data)
+
+
+def memory(request, megs):
+    print("Allocating {}MB of RAM".format(megs))
+    dummy = ' ' * int(megs) * 1024 * 1014
+    print("Waiting 15seconds so Heroku can notice this")
+    sleep(15)
+    data = {
+        "megs": megs,
+    }
+    return render(request, "memory.html", data)

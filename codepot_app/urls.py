@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^save-file$', 'codepot.views.save_file', name='save-file'),
     url(r'^read-file$', 'codepot.views.read_file', name='read-file'),
     url(r'^python-version$', 'codepot.views.python_version', name='python-version'),
+    url(r'^memory/(?P<megs>[0-9]+)/$', 'codepot.views.memory', name='memory'),
 ]
